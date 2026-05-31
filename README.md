@@ -2,6 +2,8 @@
 
 FanPulse 是一个面向欧美流行音乐、K-pop 追星场景的 AI 内容运营产品 Demo。
 
+GitHub：https://github.com/scigjh1/fanpulse-music-fandom-ops-demo
+
 它不是二次元项目，也不是普通文案生成器，而是把粉丝站/内容运营的真实工作拆成：
 
 ```text
