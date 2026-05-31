@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FanPulse 音乐追星内容运营工作台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="waveCanvas"></canvas>
+    <main class="app">
+      <aside class="panel control-panel">
+        <div class="brand">
+          <div class="logo">FP</div>
+          <div>
+            <p>Music Fandom Ops</p>
+            <h1>FanPulse</h1>
+          </div>
+        </div>
+
+        <form id="planForm" class="form">
+          <label>
+            <span>艺人 / 组合</span>
+            <input id="artist" value="NovaWave" maxlength="28" />
+          </label>
+
+          <label>
+            <span>粉丝组织</span>
+            <input id="fandom" value="Global fanbase" maxlength="28" />
+          </label>
+
+          <label>
+            <span>运营场景</span>
+            <select id="scene">
+              <option value="comeback">回归宣发</option>
+              <option value="streaming">打歌 / 流媒任务</option>
+              <option value="concert">演唱会 / 巡演</option>
+              <option value="daily">日常追星内容</option>
+            </select>
+          </label>
+
+          <label>
+            <span>主平台</span>
+            <select id="platform">
+              <option>小红书</option>
+              <option>抖音</option>
+              <option>TikTok</option>
+              <option>X/Twitter</option>
+              <option>Instagram</option>
+              <option>微博</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>内容语气</legend>
+            <div class="chips" id="toneChips">
+              <button class="active" type="button" data-tone="热血但克制">热血</button>
+              <button type="button" data-tone="欧美流行杂志感">欧美感</button>
+              <button type="button" data-tone="K-pop 打歌应援感">应援感</button>
+              <button type="button" data-tone="轻松路人入坑感">入坑感</button>
+              <button type="button" data-tone="数据复盘专业感">复盘感</button>
+            </div>
+          </fieldset>
+
+          <label>
+            <span>本轮目标</span>
+            <textarea id="goal" rows="4">为新歌回归做预热内容，提升收藏、评论和跨平台分享。</textarea>
+          </label>
+
+          <button id="generateBtn" class="primary" type="submit">
+            <span>生成追星运营方案</span>
+            <small>LLM / fallback</small>
+          </button>
+        </form>
+      </aside>
+
+      <section class="hero panel">
+        <div class="hero-head">
+          <div>
+            <p class="eyebrow">Campaign Strategy</p>
+            <h2 id="planTitle">NovaWave 回归期粉丝作战板</h2>
+            <p id="coreInsight">追星用户不是缺内容，而是缺可复制的任务节奏和多平台表达模板。</p>
+          </div>
+          <span id="sourceBadge">LOCAL</span>
+        </div>
+
+        <div class="metrics">
+          <div><strong id="exposure">24k</strong><span>预估曝光</span></div>
+          <div><strong id="engagementRate">12.4%</strong><span>互动率</span></div>
+          <div><strong id="saveRate">6.2%</strong><span>收藏率</span></div>
+          <div><strong id="commentRate">3.1%</strong><span>评论率</span></div>
+        </div>
+
+        <div class="strategy-grid">
+          <article>
+            <span>目标用户</span>
+            <strong id="audience">核心粉</strong>
+          </article>
+          <article>
+            <span>传播钩子</span>
+            <strong id="hook">今日追星任务表</strong>
+          </article>
+          <article>
+            <span>定位</span>
+            <strong id="positioning">回归期粉丝内容运营工作台</strong>
+          </article>
+        </div>
+
+        <div class="content-block">
+          <div class="block-title">
+            <span>多平台内容生成</span>
+            <button id="copyContent" type="button">复制内容包</button>
+          </div>
+          <div class="copy-tabs">
+            <section>
+              <b>小红书</b>
+              <p id="xiaohongshu"></p>
+            </section>
+            <section>
+              <b>TikTok / 抖音</b>
+              <p id="tiktok"></p>
+            </section>
+            <section>
+              <b>X / Twitter</b>
+              <p id="twitter"></p>
+            </section>
+          </div>
+          <div id="hashtags" class="tags"></div>
+        </div>
+      </section>
+
+      <aside class="panel right-panel">
+        <section class="module">
+          <div class="block-title">
+            <span>发布日历</span>
+            <small>Comeback timeline</small>
+          </div>
+          <ol id="calendar" class="timeline"></ol>
+        </section>
+
+        <section class="module">
+          <div class="block-title">
+            <span>粉丝任务</span>
+            <small>Fan missions</small>
+          </div>
+          <ul id="tasks" class="task-list"></ul>
+        </section>
+
+        <section class="module">
+          <div class="block-title">
+            <span>复盘建议</span>
+            <button id="copyReview" type="button">复制复盘</button>
+          </div>
+          <p id="diagnosis" class="diagnosis"></p>
+          <p id="nextIteration" class="next"></p>
+        </section>
+
+        <section class="module">
+          <div class="block-title">
+            <span>风险提醒</span>
+            <small>版权 / 社区</small>
+          </div>
+          <ul id="risk" class="risk-list"></ul>
+        </section>
+      </aside>
+    </main>
+    <div id="toast" class="toast">已复制</div>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
