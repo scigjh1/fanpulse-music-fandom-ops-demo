@@ -37,15 +37,32 @@ npm start
 http://localhost:4188
 ```
 
-## 接入大模型
+## 接入国内大模型
 
 ```powershell
-$env:OPENAI_API_KEY="你的 API Key"
-$env:OPENAI_MODEL="gpt-5.5"
+$env:LLM_PROVIDER="deepseek"
+$env:DEEPSEEK_API_KEY="你的 DeepSeek API Key"
+$env:LLM_MODEL="deepseek-chat"
 npm start
 ```
 
-没有 API Key 时，项目会自动使用本地生成器兜底。
+也支持通义千问、Kimi、智谱和自定义 OpenAI-compatible 服务：
+
+```powershell
+# 通义千问
+$env:LLM_PROVIDER="qwen"
+$env:DASHSCOPE_API_KEY="你的 DashScope API Key"
+$env:LLM_MODEL="qwen-plus"
+npm start
+
+# Kimi
+$env:LLM_PROVIDER="kimi"
+$env:MOONSHOT_API_KEY="你的 Moonshot API Key"
+$env:LLM_MODEL="moonshot-v1-8k"
+npm start
+```
+
+没有 API Key 或模型调用失败时，项目会自动使用本地生成器兜底。不要把 API Key 写进前端代码，前端只请求 `/api/generate`。
 
 ## 文件结构
 
